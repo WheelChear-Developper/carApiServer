@@ -3,9 +3,12 @@ from app.core.whisper_loader import whisper_model
 from app.core.config import SENTIMENT_MODEL_JA, SENTIMENT_MODEL_EN
 from transformers import pipeline
 from app.services.audio_emotion_service import run_smile_analysis, extract_voice_tone_features
+from app.core.config import AUDIO_TMP_DIR
 import subprocess, shutil, uuid, os, librosa, time, logging
 
 logger = logging.getLogger("uvicorn")
+AUDIO_TMP_DIR = "tmp/audio"
+os.makedirs(AUDIO_TMP_DIR, exist_ok=True)
 
 # 感情分析モデル取得
 def get_sentiment_analyzer(language: str):
@@ -48,8 +51,8 @@ async def transcribe_audio(file: UploadFile, language: str, timeout: int):
     - テキスト感情分析、OpenSMILEで声の分析も追加
     """
     overall_start = time.time()
-    input_filename = f"input_{uuid.uuid4().hex}_{file.filename}"
-    temp_filename = f"converted_{uuid.uuid4().hex}.wav"
+    input_filename = os.path.join(AUDIO_TMP_DIR, f"input_{uuid.uuid4().hex}_{file.filename}")
+    temp_filename = os.path.join(AUDIO_TMP_DIR, f"converted_{uuid.uuid4().hex}.wav")
 
     with open(input_filename, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)

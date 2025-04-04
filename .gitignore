@@ -44,3 +44,6 @@ ruff_cache/
 # テスト用ダミーデータ
 test_data/
 sample_audio/
+
+# 一時音声ファイル（保存対象外）
+tmp/audio/
