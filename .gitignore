@@ -1,0 +1,46 @@
+# Python 生成物
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.log
+
+# 仮想環境
+venv/
+env/
+whisper-env/
+
+# 環境変数ファイル
+.env
+.env.*
+
+# SQLite DB
+*.db
+*.sqlite3
+
+# Jupyter Notebook チェックポイント
+.ipynb_checkpoints/
+
+# VSCode 関連
+.vscode/
+*.code-workspace
+
+# OSファイル
+.DS_Store
+Thumbs.db
+
+# mypy / pytest / coverage などのキャッシュ
+.mypy_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Lint / フォーマッター
+ruff_cache/
+.cache/
+
+# テスト用ダミーデータ
+test_data/
+sample_audio/

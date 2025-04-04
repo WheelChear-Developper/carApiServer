@@ -1,0 +1,18 @@
+# FastAPI & サーバー
+fastapi
+uvicorn[standard]
+
+# Whisper（高速版）
+faster-whisper
+
+# 感情分析（Transformers）
+transformers
+torch             # CPU or GPU 環境に応じて調整（下記補足参照）
+
+# 音声処理
+librosa
+soundfile         # librosa依存
+ffmpeg-python     # PythonからFFmpeg実行
+
+# ユーティリティ
+python-dotenv     # .env読み込み
